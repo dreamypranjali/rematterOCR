@@ -1,0 +1,62 @@
+.webcam_class{
+    margin-top: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	
+	
+	
+
+}
+.button_box{
+	margin-top: 1%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 1%;
+    display: flex;
+	
+	justify-content: center;
+	align-items: center;
+}
+
+.button{
+
+	
+    background-color:#0a0a23;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+	margin-left: 1%;
+	margin-right:1%;
+
+}
+
+.title_box{
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Lucida Console';
+	font-size: 2vw;
+	color: white;
+	height: 50vw;
+	background: url('DCR.jpeg')
+
+}
+
+.intro_box{
+	color: #000;
+    border-style:solid; 
+	border-color: black;
+    border-radius:10px; 
+    padding:15px;
+    min-height:50%; 
+    min-width: 50%;
+	
+	font-size: 2vw;
+	text-align: center;
+}
