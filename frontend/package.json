@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage":"https://master.d3u8iix7wi31id.amplifyapp.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
