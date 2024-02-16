@@ -9,15 +9,23 @@ import Styles from './App.css';
 import Image from 'image-js';
 
 
+
 console.log(path);
 
 const Webcam_function = () =>{
 	const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
   const[text, setText] = React.useState(null);
+  const[name, setName] = React.useState(null);
+  const[license, setLicense] = React.useState(null);
+  const[expiry, setExpiry] = React.useState(null);
   const canvasRef = React.useRef(null);
   const imageRef = React.useRef(null);
-  //const path = './smile.png'
+  const path = './smile.png'
+  const videoConstraints = {
+      //facingMode: {exact: "environment"}
+      facingMode: "environment"
+    };
   
 
 
@@ -27,13 +35,13 @@ const Webcam_function = () =>{
   }, [webcamRef, setImgSrc]);
 
   async function execute() {
-  let image = await Image.load(imgSrc);
-  let grey = image.grey() // convert the image to greyscale.
-  //let blurred = grey.blurFilter({radius: 1});
-  console.log(grey)
-  setImgSrc(grey.toDataURL());
-  //return grey;
-}
+    const image = await Image.load(imgSrc);
+    const greyImage = image.grey();
+    const thresholdValue = greyImage.getThreshold('shanbhag');
+    const binaryImage = greyImage.mask({threshold: thresholdValue});
+    setImgSrc(binaryImage.toDataURL());
+
+  }
   
   const send = () =>{
     //Axios.post("http://localhost:3001/add", {image: imgSrc})
@@ -47,6 +55,8 @@ const Webcam_function = () =>{
 
     //const canvas = canvasRef.current;
     
+    
+
     execute();
     
 
@@ -65,6 +75,8 @@ const Webcam_function = () =>{
       let confidence = result.data.confidence
       console.log(confidence);
       let text = result.data.text
+      let first = text.split("Name");
+      let second = 
       setText(text);
       console.log(text);
       
@@ -82,6 +94,7 @@ const Webcam_function = () =>{
         audio={false}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
+        videoConstraints={videoConstraints}
       />
       
       
